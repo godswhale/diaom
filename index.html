@@ -25,11 +25,15 @@
             border-radius: 50%;
             margin-left: 10px;
         }
-        #diaom {
-            margin-left: 10px;
+        #diaom,#pre-sale {
+            margin-left: 30px;
             color: #fff;
             font-weight: 600;
+            text-decoration: none;
         }
+
+        #pre-sale a:hover {color:rgb(61, 59, 59);}  
+        #pre-sale a:active {color: #000;} 
         
         .token,.about,.synopsis,.promise  {
             /*display: flex;
@@ -91,13 +95,183 @@
         .mark {
             margin-top: 0px;
         }
+
+        /* popup */
+        .popup {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(5, 5, 5, 0.8);
+          z-index: 9999;
+        }
+        .modal {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: #141618;
+          border-radius: 10px;
+          width: 80%;
+          height: 350px;
+          color: #fff;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -ms-word-break: break-all;
+          word-break: break-word;
+          border: 1px solid #4d4c4c;
+        }
+        .popup-he {
+            height: 40px;
+            border-bottom: 1px solid #8f8c8c;
+        }
+        .butt {
+          width: 100%;
+          display: flex;
+        }
+        .butt button {
+          background: rgb(249, 145, 10);
+          border: 2px solid rgb(249, 145, 10);
+          border-radius: 5px;
+          height: 35px;
+          color: #fff;
+          font-weight: 600;
+          margin: 0 auto; 
+        }
+
+        .close-receive-assets {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .close-receive-assets a {
+            font-weight: bold;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .close-receive-assets a:hover {color:rgb(61, 59, 59);}  
+        .close-receive-assets a:active {color: #000;} 
+
+        #contract {
+            text-align: center;
+            color: #fc0909;
+        }
+        #countdown,
+        #proportion,
+        .popup-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #proportion {
+            padding: 10px;
+            font-weight: 500;
+            margin-top: 30px;
+        }
+        #proportion p {
+            margin: 5px;
+        }
+
+        .progress-bar {
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            display: flex;
+            margin: 0 auto;
+            width: 80%;
+            
+        }
+
+        .progress {
+            width: 0;
+            height: 40px;
+            background-color: rgb(249, 145, 10);
+            border-radius: 3px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+        }
+        #proportion > h2 {
+            margin: 3px;
+        }
+        #ti-days,#ti-hours,#ti-minutes,#ti-seconds {
+            color: rgb(249, 145, 10);
+        }
     </style>
     <script type="text/javascript">
+
+        let state = false;
+
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("twitter").addEventListener("click", function(){
                 window.location.href = "https://x.com/Creator145176?s=20";
             });
+
+            document.getElementById("pre-sale").addEventListener("click", function(){
+                var dataElement = document.getElementById('popup');
+                dataElement.style.display = 'block';
+                state = true;
+                timeLeft();
+            });
+
+
+            document.getElementById("closure").addEventListener("click", function(){
+                var dataElement = document.getElementById('popup');
+                dataElement.style.display = 'none';
+                state = false;
+            });
+
+            function setProgress(value) {
+                var progressElement = document.getElementById("progress");
+                progressElement.style.width = value + "%";
+                progressElement.innerHTML = value + "%";
+            }
+
+            // Example: set progress to 50%
+            //setProgress(0);
+
+
+            async function timeLeft() {
+                var countDownDate = new Date("2024-03-28").getTime();
+                if (!state) {
+                    return;
+                }
+
+                var x = setInterval(function() {
+
+                    var now = new Date().getTime();
+                    var distance = countDownDate - now;
+
+                    // Calculate days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Display the countdown in the element with id "countdown"
+                    //document.getElementById("countdown").innerHTML = days + "天 " + hours + "时 " + minutes + "分 " + seconds + "秒 ";
+
+                    document.getElementById("ti-days").innerHTML = days;
+                    document.getElementById("ti-hours").innerHTML = hours;
+                    document.getElementById("ti-minutes").innerHTML = minutes;
+                    document.getElementById("ti-seconds").innerHTML = seconds;
+                    // If the countdown is over, display a message
+                    if (distance < 0) {
+                        clearInterval(x);
+                        //document.getElementById("countdown").innerHTML = "EXPIRED";
+                        document.getElementById("ti-days").innerHTML = '00';
+                        document.getElementById("ti-hours").innerHTML = '00';
+                        document.getElementById("ti-minutes").innerHTML = '00';
+                        document.getElementById("ti-seconds").innerHTML = '00';
+                    }
+                }, 1000);
+            }
+
         })
+
     </script>
 </head>
 <body>
@@ -132,6 +306,48 @@
             <h3 class="synopsis-text">介绍</h3>
             <p>吊毛, 打钱!</p>
             <p>不打钱, 哪里有未来</p>
+        </div>
+        <div class="popup" id="popup">
+            <div class="modal">
+                <div class="popup-he">
+                    <h2 class="popup-text">预售</h2>
+                    <div class="close-receive-assets">
+                        <a href="#" id="closure">X</a>
+                    </div>
+                </div>
+                <div id="proportion">
+                    <h2 style="color: rgb(249, 145, 10);">1</h2>
+                    <h2> Matic = </h2>
+                    <h2 style="color: rgb(249, 145, 10);">5649717</h2>
+                    <h2> DIAOM</h2>
+                </div>
+               
+                <div id="countdown">
+                    <h2>剩余时间: </h2> 
+                    <h2 id="ti-days"></h2>
+                    <h2>天</h2>
+                    <h2 id="ti-hours"></h2>
+                    <h2>时</h2>
+                    <h2 id="ti-minutes"></h2>
+                    <h2>分</h2>
+                    <h2 id="ti-seconds"></h2>
+                    <h2>秒</h2>
+                </div>
+
+                <div id="contract">
+                    <p>向DIAOM合约转入Matic即可参与, 最低20Matic</p>
+                    <p>吊毛, 别犹豫, 快打钱!</p>
+                </div>
+
+                <!--<div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>-->
+                
+
+                <!--<div class="butt">
+                  <button id="transmit">参与</button>
+                </div>-->
+            </div>
         </div>
         <div class="bott">
             <div class="mark">
