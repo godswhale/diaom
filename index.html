@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>diaom</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/godswhale/diaom/main/image/logo.png" type="image/png">
-    <!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/godswhale/diaom/main/css/index.css">-->
+    <title>DIAOM</title>
+    <link rel="icon" href="https://img2.imgtp.com/2024/03/22/3gJnuVJf.png" type="image/png">
     <style>
         body {
-            background-color: #000;
+            width: 100%;
+            margin-left: 0;
+            background-color: #1e1e1e;
         }
         .heads {
             display: flex;
+            width: 100%;
             height: 80px;
             border-bottom: 1px solid #fff;
             display: flex;
@@ -42,6 +45,26 @@
             font-weight: 500;
             color: #efeded;
             margin-top: 60px;
+        }
+        .promise,.synopsis {
+            background-color: #212121;
+            padding: 30px;
+        }
+        .topic {
+            text-align: center;
+            font-weight: 500;
+            color: #efeded;
+            margin-top: 0px;
+            padding: 40px;
+            background-color: #131313;
+        }
+        .topic img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        #topic-text {
+            color: rgb(249, 145, 10);
         }
         /*.synopsis,
         .promise {
@@ -73,7 +96,7 @@
             font-weight: 500;
             color: #fff;
             height: 160px;
-            background-color: #4d4c4c;
+            background-color: #131313;
             padding: 20px;
         }
         .Copyright {
@@ -112,8 +135,8 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background: #141618;
-          border-radius: 10px;
+          background: #131313;
+          border-radius: 5px;
           width: 90%;
           height: 350px;
           color: #fff;
@@ -121,7 +144,7 @@
           word-wrap: break-word;
           -ms-word-break: break-all;
           word-break: break-word;
-          border: 1px solid #4d4c4c;
+          border: 1px solid #000;
         }
         .popup-he {
             height: 40px;
@@ -200,6 +223,11 @@
         #ti-days,#ti-hours,#ti-minutes,#ti-seconds {
             color: rgb(249, 145, 10);
         }
+
+        #font-color {
+            color: rgb(249, 145, 10);
+            font-size: 20px;
+        }
     </style>
     <script type="text/javascript">
 
@@ -277,36 +305,40 @@
 <body>
   <div>
     <div class="heads">
-        <img src="https://raw.githubusercontent.com/godswhale/diaom/main/image/logo.png">
+        <img src="https://img2.imgtp.com/2024/03/22/3gJnuVJf.png">
         <p id="diaom">DIAOM</p>
         <a href="#" id="pre-sale">预售</a>
     </div>
     <div class="content">
+        <div class="topic">
+            <img src="https://img2.imgtp.com/2024/03/22/3gJnuVJf.png">
+            <h2>DIAOM</h2>
+            <h2 id="topic-text">不打钱，哪里有未来!</h2>
+        </div>
         <div class="token">
-            <h3 class="token-text">代币经济学</h3>
-            <p>预售: 40%</p>
-            <p>添加流动性: 40%</p>
-            <p>营销: 10%</p>
-            <p>团队: 10%</p>
+            <h3 class="token-text">代币经济</h3>
+            <p>预售: <samp id="font-color">3200</samp>亿</p>
+            <p>添加流动性: <samp id="font-color">3200</samp>亿</p>
+            <p>营销: <samp id="font-color">800</samp>亿</p>
+            <p>团队: <samp id="font-color">800</samp>亿</p>
         </div>
         <div class="promise">
             <h3 class="promise-text">承诺</h3>
             <p>1、LP永久锁仓</p>
-            <p>2、团队持有TOKEN，分批解锁</p>
+            <p>2、团队持有TOKEN, 锁仓</p>
         </div>
 
         <div class="about">
             <h3 class="about-text">关于</h3>
-            <p>发行量: 8000亿</p>
-            <p>网络: polygon</p>
-            <p>名称: DIAOM</p>
+            <p>发行量: <samp id="font-color">8000</samp>亿</p>
+            <p>网络: <samp id="font-color">Polygon</samp></p>
+            <p>名称: <samp id="font-color">DIAOM</samp></p>
             <!--<p>合约地址: </p>-->
         </div>
-        <div class="pre-sale-progress"></div>
         <div class="synopsis">
             <h3 class="synopsis-text">介绍</h3>
             <p>吊毛, 打钱!</p>
-            <p>不打钱, 哪里有未来</p>
+            <p>不持有<samp id="font-color">DIAOM</samp>, 哪里有未来!</p>
         </div>
         <div class="popup" id="popup">
             <div class="modal">
@@ -350,12 +382,13 @@
                 </div>-->
             </div>
         </div>
+
         <div class="bott">
             <div class="mark">
-                <img id="logo" src="https://raw.githubusercontent.com/godswhale/diaom/main/image/logo.png">
-                <img id="twitter" src="https://raw.githubusercontent.com/godswhale/diaom/main/image/twitter.png">
+                <img id="logo" src="https://img2.imgtp.com/2024/03/22/3gJnuVJf.png">
+                <img id="twitter" src="https://img2.imgtp.com/2024/03/22/ndYYS1qs.png">
             </div>
-            <div class="Copyright">Copyright @2024 DIAOM</div>
+            <div class="Copyright">Copyright © 2024 DIAOM</div>
         </div>
     </div>
   </div>
